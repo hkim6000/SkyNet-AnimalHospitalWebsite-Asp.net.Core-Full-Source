@@ -1,0 +1,66 @@
+{
+  "table": "STAFFHOURS",
+  "area": "admin",
+  "description": "Weekly working hours of a person, one row per weekday.",
+  "primaryKey": [
+    "STAFF_ID",
+    "DAY_NO"
+  ],
+  "columns": [
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true,
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "DAY_NO",
+      "type": "int",
+      "nullable": false,
+      "primaryKey": true,
+      "description": "0 = Sunday ... 6 = Saturday."
+    },
+    {
+      "name": "IS_ON",
+      "type": "bit",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "FROM_HM",
+      "type": "nvarchar",
+      "size": 5,
+      "nullable": false,
+      "default": "09:00",
+      "description": "Start time HH:mm."
+    },
+    {
+      "name": "TO_HM",
+      "type": "nvarchar",
+      "size": 5,
+      "nullable": false,
+      "default": "17:00",
+      "description": "End time HH:mm."
+    },
+    {
+      "name": "BREAK_FROM",
+      "type": "nvarchar",
+      "size": 5,
+      "nullable": false,
+      "default": "",
+      "description": "Break start HH:mm (empty = no break)."
+    },
+    {
+      "name": "BREAK_TO",
+      "type": "nvarchar",
+      "size": 5,
+      "nullable": false,
+      "default": "",
+      "description": "Break end HH:mm."
+    }
+  ],
+  "indexes": [],
+  "referencedBy": []
+}

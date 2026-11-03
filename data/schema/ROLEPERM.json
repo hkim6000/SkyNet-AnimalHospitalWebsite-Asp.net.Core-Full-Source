@@ -1,0 +1,43 @@
+{
+  "table": "ROLEPERM",
+  "area": "admin",
+  "description": "Default rights of each role on each menu page.",
+  "primaryKey": [
+    "ROLE_ID",
+    "MENU_KEY"
+  ],
+  "columns": [
+    {
+      "name": "ROLE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true,
+      "references": "ROLE.ROLE_ID"
+    },
+    {
+      "name": "MENU_KEY",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true,
+      "references": "MENU.MENU_KEY"
+    },
+    {
+      "name": "RIGHTS",
+      "type": "nvarchar",
+      "size": 10,
+      "nullable": false,
+      "default": "V",
+      "description": "Letters from V, A, E, D, X."
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [],
+  "referencedBy": []
+}

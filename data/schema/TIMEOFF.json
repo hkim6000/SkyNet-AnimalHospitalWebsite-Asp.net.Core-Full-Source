@@ -1,0 +1,58 @@
+{
+  "table": "TIMEOFF",
+  "area": "admin",
+  "description": "Planned time off of a person.",
+  "primaryKey": [
+    "TIMEOFF_ID"
+  ],
+  "columns": [
+    {
+      "name": "TIMEOFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "FROM_DATE",
+      "type": "date",
+      "nullable": false
+    },
+    {
+      "name": "TO_DATE",
+      "type": "date",
+      "nullable": false
+    },
+    {
+      "name": "NOTE",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_TIMEOFF_STAFF",
+      "unique": false,
+      "columns": [
+        "STAFF_ID",
+        "FROM_DATE"
+      ]
+    }
+  ],
+  "referencedBy": []
+}

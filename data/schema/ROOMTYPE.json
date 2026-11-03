@@ -1,0 +1,122 @@
+{
+  "table": "ROOMTYPE",
+  "area": "rooms",
+  "description": "Room types: exam, special, emergency, surgery, recovery, grooming and boarding runs.",
+  "primaryKey": [
+    "ROOMTYPE_ID"
+  ],
+  "columns": [
+    {
+      "name": "ROOMTYPE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "TYPE_NAME",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false
+    },
+    {
+      "name": "PURPOSE",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "default": "visit",
+      "values": [
+        "visit",
+        "special",
+        "emergency",
+        "surgery",
+        "recovery",
+        "grooming",
+        "boarding"
+      ]
+    },
+    {
+      "name": "COLOR",
+      "type": "nvarchar",
+      "size": 7,
+      "nullable": false,
+      "default": "#3F7D6B"
+    },
+    {
+      "name": "SPECIES",
+      "type": "nvarchar",
+      "size": 100,
+      "nullable": false,
+      "default": "",
+      "description": "Comma list of SPECIES_KEY values; empty = all species."
+    },
+    {
+      "name": "SIZES",
+      "type": "nvarchar",
+      "size": 40,
+      "nullable": false,
+      "default": "",
+      "description": "Comma list of sizes a boarding run takes; empty = all sizes."
+    },
+    {
+      "name": "NIGHT_ITEM_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "ITEM.ITEM_ID"
+    },
+    {
+      "name": "SHORT_TEXT",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "LONG_TEXT",
+      "type": "nvarchar",
+      "size": 1000,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "IMAGE",
+      "type": "nvarchar",
+      "size": 300,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "ONLINE",
+      "type": "bit",
+      "nullable": false,
+      "default": 0,
+      "description": "1 = boarding run type can be booked online."
+    },
+    {
+      "name": "TYPE_ORDER",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "ACTIVE",
+      "type": "bit",
+      "nullable": false,
+      "default": 1
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [],
+  "referencedBy": [
+    "APPOINTMENT.ROOMTYPE_ID",
+    "BOOKTYPE.ROOMTYPE_ID",
+    "ROOM.ROOMTYPE_ID"
+  ]
+}

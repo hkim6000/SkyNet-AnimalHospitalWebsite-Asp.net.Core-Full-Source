@@ -1,0 +1,80 @@
+{
+  "table": "REMINDER",
+  "area": "clinical",
+  "description": "Contact log for due reminders (vaccines, rechecks, wellness).",
+  "primaryKey": [
+    "REM_ID"
+  ],
+  "columns": [
+    {
+      "name": "REM_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "PET_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "PET.PET_ID"
+    },
+    {
+      "name": "ITEM_TEXT",
+      "type": "nvarchar",
+      "size": 100,
+      "nullable": false
+    },
+    {
+      "name": "DUE_DATE",
+      "type": "date",
+      "nullable": false
+    },
+    {
+      "name": "CONTACTED_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "HOW",
+      "type": "nvarchar",
+      "size": 10,
+      "nullable": false,
+      "default": "phone",
+      "values": [
+        "phone",
+        "email",
+        "text",
+        "letter"
+      ]
+    },
+    {
+      "name": "NOTE",
+      "type": "nvarchar",
+      "size": 300,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_REMINDER_PET",
+      "unique": false,
+      "columns": [
+        "PET_ID",
+        "ITEM_TEXT",
+        "DUE_DATE"
+      ]
+    }
+  ],
+  "referencedBy": []
+}

@@ -1,0 +1,40 @@
+{
+  "table": "ROLE",
+  "area": "admin",
+  "description": "Staff roles (Manager, Office staff, Vet, Technician, Groomer, Website editor).",
+  "primaryKey": [
+    "ROLE_ID"
+  ],
+  "columns": [
+    {
+      "name": "ROLE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "ROLE_NAME",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false
+    },
+    {
+      "name": "ROLE_ORDER",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [],
+  "referencedBy": [
+    "ROLEPERM.ROLE_ID",
+    "STAFF.ROLE_ID"
+  ]
+}

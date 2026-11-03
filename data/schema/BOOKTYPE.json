@@ -1,0 +1,184 @@
+{
+  "table": "BOOKTYPE",
+  "area": "catalog",
+  "description": "What can be booked (online or by staff): visit type, length, species, price item and drop-off rules.",
+  "primaryKey": [
+    "BOOKTYPE_ID"
+  ],
+  "columns": [
+    {
+      "name": "BOOKTYPE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "BOOK_NAME",
+      "type": "nvarchar",
+      "size": 100,
+      "nullable": false
+    },
+    {
+      "name": "TEAM_KEY",
+      "type": "nvarchar",
+      "size": 30,
+      "nullable": false,
+      "default": "",
+      "references": "TEAM.TEAM_KEY"
+    },
+    {
+      "name": "VISIT_TYPE",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "default": "clinic",
+      "values": [
+        "clinic",
+        "grooming",
+        "surgery"
+      ]
+    },
+    {
+      "name": "SHORT_TEXT",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "LONG_TEXT",
+      "type": "nvarchar",
+      "size": 2000,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "EXPECT",
+      "type": "nvarchar",
+      "size": 1000,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "MINUTES",
+      "type": "int",
+      "nullable": false,
+      "default": 30,
+      "description": "Length in minutes (small size or no size)."
+    },
+    {
+      "name": "MINUTES_M",
+      "type": "int",
+      "nullable": false,
+      "default": 0,
+      "description": "Length for medium size."
+    },
+    {
+      "name": "MINUTES_L",
+      "type": "int",
+      "nullable": false,
+      "default": 0,
+      "description": "Length for large size."
+    },
+    {
+      "name": "ITEM_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "ITEM.ITEM_ID"
+    },
+    {
+      "name": "ROOMTYPE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "ROOMTYPE.ROOMTYPE_ID"
+    },
+    {
+      "name": "SPECIES",
+      "type": "nvarchar",
+      "size": 100,
+      "nullable": false,
+      "default": "",
+      "description": "Comma list of SPECIES_KEY values; empty = all species."
+    },
+    {
+      "name": "DROP_FROM",
+      "type": "nvarchar",
+      "size": 5,
+      "nullable": false,
+      "default": "",
+      "description": "Drop-off window start HH:mm (surgery)."
+    },
+    {
+      "name": "DROP_TO",
+      "type": "nvarchar",
+      "size": 5,
+      "nullable": false,
+      "default": "",
+      "description": "Drop-off window end HH:mm (surgery)."
+    },
+    {
+      "name": "PICKUP_HM",
+      "type": "nvarchar",
+      "size": 5,
+      "nullable": false,
+      "default": "",
+      "description": "Usual pick-up time HH:mm (surgery)."
+    },
+    {
+      "name": "PREOP",
+      "type": "nvarchar",
+      "size": 1000,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "IMAGE",
+      "type": "nvarchar",
+      "size": 300,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "ONLINE",
+      "type": "bit",
+      "nullable": false,
+      "default": 1,
+      "description": "1 = bookable on the website."
+    },
+    {
+      "name": "NEW_OK",
+      "type": "bit",
+      "nullable": false,
+      "default": 1,
+      "description": "1 = new clients may book it online."
+    },
+    {
+      "name": "BOOK_ORDER",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "ACTIVE",
+      "type": "bit",
+      "nullable": false,
+      "default": 1
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [],
+  "referencedBy": [
+    "APPOINTMENT.BOOKTYPE_ID",
+    "BOOKSTAFF.BOOKTYPE_ID"
+  ]
+}

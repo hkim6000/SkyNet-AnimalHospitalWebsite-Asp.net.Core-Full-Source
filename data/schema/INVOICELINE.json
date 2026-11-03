@@ -1,0 +1,112 @@
+{
+  "table": "INVOICELINE",
+  "area": "money",
+  "description": "Lines of an invoice, copied from the visit orders or added at checkout.",
+  "primaryKey": [
+    "ILINE_ID"
+  ],
+  "columns": [
+    {
+      "name": "ILINE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "INVOICE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "INVOICE.INVOICE_ID"
+    },
+    {
+      "name": "LINE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "ORDERLINE.LINE_ID",
+      "description": "Order line it came from; empty for lines added at checkout."
+    },
+    {
+      "name": "ITEM_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "ITEM.ITEM_ID"
+    },
+    {
+      "name": "ITEM_TYPE",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "default": "",
+      "values": [
+        "practice",
+        "medicine",
+        "test",
+        "vaccine",
+        "grooming",
+        "boarding",
+        "product",
+        "fee"
+      ]
+    },
+    {
+      "name": "DESCRIPTION",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false
+    },
+    {
+      "name": "QTY",
+      "type": "decimal",
+      "precision": 10,
+      "scale": 2,
+      "nullable": false,
+      "default": 1
+    },
+    {
+      "name": "UNIT_PRICE",
+      "type": "decimal",
+      "precision": 12,
+      "scale": 2,
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "TAXABLE",
+      "type": "bit",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "AMOUNT",
+      "type": "decimal",
+      "precision": 12,
+      "scale": 2,
+      "nullable": false,
+      "default": 0,
+      "description": "ROUND(QTY * UNIT_PRICE, 2)."
+    },
+    {
+      "name": "LINE_ORDER",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_INVOICELINE_INV",
+      "unique": false,
+      "columns": [
+        "INVOICE_ID",
+        "LINE_ORDER"
+      ]
+    }
+  ],
+  "referencedBy": []
+}

@@ -1,0 +1,66 @@
+{
+  "table": "TEAM",
+  "area": "catalog",
+  "description": "Teams that group booking types on the website.",
+  "primaryKey": [
+    "TEAM_KEY"
+  ],
+  "columns": [
+    {
+      "name": "TEAM_KEY",
+      "type": "nvarchar",
+      "size": 30,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "TEAM_NAME",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false
+    },
+    {
+      "name": "BLURB",
+      "type": "nvarchar",
+      "size": 400,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "IMAGE",
+      "type": "nvarchar",
+      "size": 300,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "COLOR",
+      "type": "nvarchar",
+      "size": 7,
+      "nullable": false,
+      "default": "#3F7D6B"
+    },
+    {
+      "name": "TEAM_ORDER",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "ACTIVE",
+      "type": "bit",
+      "nullable": false,
+      "default": 1
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [],
+  "referencedBy": [
+    "BOOKTYPE.TEAM_KEY"
+  ]
+}

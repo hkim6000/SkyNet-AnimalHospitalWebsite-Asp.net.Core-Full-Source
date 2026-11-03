@@ -1,0 +1,168 @@
+{
+  "table": "PET",
+  "area": "clients",
+  "description": "Pets and their owner.",
+  "primaryKey": [
+    "PET_ID"
+  ],
+  "columns": [
+    {
+      "name": "PET_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "CLIENT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "CLIENT.CLIENT_ID"
+    },
+    {
+      "name": "PET_NAME",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false
+    },
+    {
+      "name": "SPECIES_KEY",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "references": "SPECIES.SPECIES_KEY"
+    },
+    {
+      "name": "BREED",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "SEX",
+      "type": "nvarchar",
+      "size": 1,
+      "nullable": false,
+      "default": "",
+      "values": [
+        "",
+        "m",
+        "f"
+      ]
+    },
+    {
+      "name": "FIXED",
+      "type": "bit",
+      "nullable": false,
+      "default": 0,
+      "description": "1 = spayed or neutered."
+    },
+    {
+      "name": "BIRTH_DATE",
+      "type": "date",
+      "nullable": true
+    },
+    {
+      "name": "COLOR",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "SIZE",
+      "type": "nvarchar",
+      "size": 10,
+      "nullable": false,
+      "default": "",
+      "values": [
+        "",
+        "small",
+        "medium",
+        "large"
+      ]
+    },
+    {
+      "name": "MICROCHIP",
+      "type": "nvarchar",
+      "size": 30,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "ALERT",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": "",
+      "description": "Warning shown on every visit (e.g. bites)."
+    },
+    {
+      "name": "PHOTO",
+      "type": "nvarchar",
+      "size": 300,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "ACTIVE",
+      "type": "bit",
+      "nullable": false,
+      "default": 1
+    },
+    {
+      "name": "DECEASED_DATE",
+      "type": "date",
+      "nullable": true,
+      "description": "Date the pet passed away."
+    },
+    {
+      "name": "CREATED_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "CREATED_BY",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID",
+      "description": "STAFF_ID, or web when created by an online booking."
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_PET_CLIENT",
+      "unique": false,
+      "columns": [
+        "CLIENT_ID"
+      ]
+    },
+    {
+      "name": "IX_PET_NAME",
+      "unique": false,
+      "columns": [
+        "PET_NAME"
+      ]
+    }
+  ],
+  "referencedBy": [
+    "APPOINTMENT.PET_ID",
+    "DIAGNOSIS.PET_ID",
+    "PETVACCINE.PET_ID",
+    "PETWEIGHT.PET_ID",
+    "REMINDER.PET_ID",
+    "RESULT.PET_ID",
+    "VISIT.PET_ID",
+    "VISITFILE.PET_ID"
+  ]
+}

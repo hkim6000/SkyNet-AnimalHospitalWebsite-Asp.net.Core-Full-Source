@@ -1,0 +1,31 @@
+{
+  "table": "NUMBERSEQ",
+  "area": "admin",
+  "description": "Yearly number counters for visit, invoice, payment and client numbers.",
+  "primaryKey": [
+    "SEQ_KEY"
+  ],
+  "columns": [
+    {
+      "name": "SEQ_KEY",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "primaryKey": true,
+      "description": "VIS, INV, PAY or CLI."
+    },
+    {
+      "name": "SEQ_YEAR",
+      "type": "int",
+      "nullable": false
+    },
+    {
+      "name": "SEQ_VALUE",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    }
+  ],
+  "indexes": [],
+  "referencedBy": []
+}

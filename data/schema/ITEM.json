@@ -1,0 +1,178 @@
+{
+  "table": "ITEM",
+  "area": "catalog",
+  "description": "Price list: practice, medicine, test, vaccine, grooming, boarding, product and fee items.",
+  "primaryKey": [
+    "ITEM_ID"
+  ],
+  "columns": [
+    {
+      "name": "ITEM_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "ITEM_CODE",
+      "type": "nvarchar",
+      "size": 30,
+      "nullable": false
+    },
+    {
+      "name": "ITEM_NAME",
+      "type": "nvarchar",
+      "size": 120,
+      "nullable": false
+    },
+    {
+      "name": "ITEM_TYPE",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "values": [
+        "practice",
+        "medicine",
+        "test",
+        "vaccine",
+        "grooming",
+        "boarding",
+        "product",
+        "fee"
+      ]
+    },
+    {
+      "name": "CATEGORY",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "UNIT",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "default": "each"
+    },
+    {
+      "name": "PRICE",
+      "type": "decimal",
+      "precision": 12,
+      "scale": 2,
+      "nullable": false,
+      "default": 0,
+      "description": "Price (for species with sizes: the small price)."
+    },
+    {
+      "name": "PRICE_M",
+      "type": "decimal",
+      "precision": 12,
+      "scale": 2,
+      "nullable": false,
+      "default": 0,
+      "description": "Medium-size price (null = same as PRICE)."
+    },
+    {
+      "name": "PRICE_L",
+      "type": "decimal",
+      "precision": 12,
+      "scale": 2,
+      "nullable": false,
+      "default": 0,
+      "description": "Large-size price (null = same as PRICE)."
+    },
+    {
+      "name": "TAXABLE",
+      "type": "bit",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "DOSE",
+      "type": "nvarchar",
+      "size": 120,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "INSTRUCTIONS",
+      "type": "nvarchar",
+      "size": 600,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "VAX_MONTHS",
+      "type": "int",
+      "nullable": false,
+      "default": 0,
+      "description": "Vaccines: months until the next dose is due."
+    },
+    {
+      "name": "SPECIES",
+      "type": "nvarchar",
+      "size": 100,
+      "nullable": false,
+      "default": "",
+      "description": "Comma list of SPECIES_KEY values; empty = all species."
+    },
+    {
+      "name": "TRACK_STOCK",
+      "type": "bit",
+      "nullable": false,
+      "default": 0,
+      "description": "Reserved; stock counts are not used yet."
+    },
+    {
+      "name": "ITEM_ORDER",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "NOTE",
+      "type": "nvarchar",
+      "size": 300,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "ACTIVE",
+      "type": "bit",
+      "nullable": false,
+      "default": 1
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "UX_ITEM_CODE",
+      "unique": true,
+      "columns": [
+        "ITEM_CODE"
+      ]
+    },
+    {
+      "name": "IX_ITEM_TYPE",
+      "unique": false,
+      "columns": [
+        "ITEM_TYPE",
+        "ITEM_NAME"
+      ]
+    }
+  ],
+  "referencedBy": [
+    "BOOKTYPE.ITEM_ID",
+    "INVOICELINE.ITEM_ID",
+    "ORDERLINE.ITEM_ID",
+    "PETVACCINE.ITEM_ID",
+    "ROOMTYPE.NIGHT_ITEM_ID",
+    "TESTFIELD.ITEM_ID"
+  ]
+}

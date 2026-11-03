@@ -1,0 +1,334 @@
+{
+  "database": "AnimalHospital",
+  "source": "AnimalHospital_Schema.sql",
+  "tableCount": 46,
+  "notes": [
+    "Most ids are text keys made by the application (ACTIVITY.ACT_ID is a number); links between tables (\"references\") are kept by the application, not by foreign key constraints.",
+    "Every table with SYSDTE stamps the last change time.",
+    "Times ending in _UTC (and STAFF.LAST_LOGIN) are UTC; other date-time values are hospital local time."
+  ],
+  "tables": [
+    {
+      "table": "SETTING",
+      "area": "admin",
+      "description": "Hospital settings as key/value pairs (name, contact, hours, booking, boarding, reminder, billing and website options). Edited in Settings.",
+      "file": "SETTING.json",
+      "columns": 3
+    },
+    {
+      "table": "ROLE",
+      "area": "admin",
+      "description": "Staff roles (Manager, Office staff, Vet, Technician, Groomer, Website editor).",
+      "file": "ROLE.json",
+      "columns": 4
+    },
+    {
+      "table": "MENU",
+      "area": "admin",
+      "description": "Admin menu pages grouped into sections, with the rights each page offers and the name of its extra right.",
+      "file": "MENU.json",
+      "columns": 13
+    },
+    {
+      "table": "ROLEPERM",
+      "area": "admin",
+      "description": "Default rights of each role on each menu page.",
+      "file": "ROLEPERM.json",
+      "columns": 4
+    },
+    {
+      "table": "STAFF",
+      "area": "admin",
+      "description": "People who sign in to the admin, plus their website profile for vets, technicians and groomers.",
+      "file": "STAFF.json",
+      "columns": 25
+    },
+    {
+      "table": "STAFFPERM",
+      "area": "admin",
+      "description": "Rights of one person on one menu page.",
+      "file": "STAFFPERM.json",
+      "columns": 4
+    },
+    {
+      "table": "STAFFSPECIES",
+      "area": "admin",
+      "description": "Species each vet, technician or groomer sees.",
+      "file": "STAFFSPECIES.json",
+      "columns": 2
+    },
+    {
+      "table": "STAFFHOURS",
+      "area": "admin",
+      "description": "Weekly working hours of a person, one row per weekday.",
+      "file": "STAFFHOURS.json",
+      "columns": 7
+    },
+    {
+      "table": "TIMEOFF",
+      "area": "admin",
+      "description": "Planned time off of a person.",
+      "file": "TIMEOFF.json",
+      "columns": 6
+    },
+    {
+      "table": "STAFFSESSION",
+      "area": "admin",
+      "description": "Signed-in sessions (8 hours, renewed while working).",
+      "file": "STAFFSESSION.json",
+      "columns": 5
+    },
+    {
+      "table": "ACTIVITY",
+      "area": "admin",
+      "description": "Activity log: who did what and when, including refused actions and failed sign-ins.",
+      "file": "ACTIVITY.json",
+      "columns": 7
+    },
+    {
+      "table": "SPECIES",
+      "area": "catalog",
+      "description": "Kinds of animals the hospital sees.",
+      "file": "SPECIES.json",
+      "columns": 6
+    },
+    {
+      "table": "BREED",
+      "area": "catalog",
+      "description": "Breed suggestions per species.",
+      "file": "BREED.json",
+      "columns": 4
+    },
+    {
+      "table": "ROOMTYPE",
+      "area": "rooms",
+      "description": "Room types: exam, special, emergency, surgery, recovery, grooming and boarding runs.",
+      "file": "ROOMTYPE.json",
+      "columns": 14
+    },
+    {
+      "table": "ROOM",
+      "area": "rooms",
+      "description": "Rooms, tables and boarding runs.",
+      "file": "ROOM.json",
+      "columns": 7
+    },
+    {
+      "table": "TEAM",
+      "area": "catalog",
+      "description": "Teams that group booking types on the website.",
+      "file": "TEAM.json",
+      "columns": 8
+    },
+    {
+      "table": "ITEM",
+      "area": "catalog",
+      "description": "Price list: practice, medicine, test, vaccine, grooming, boarding, product and fee items.",
+      "file": "ITEM.json",
+      "columns": 19
+    },
+    {
+      "table": "TESTFIELD",
+      "area": "catalog",
+      "description": "Result fields of a test item with units and normal ranges (optionally per species).",
+      "file": "TESTFIELD.json",
+      "columns": 11
+    },
+    {
+      "table": "BOOKTYPE",
+      "area": "catalog",
+      "description": "What can be booked (online or by staff): visit type, length, species, price item and drop-off rules.",
+      "file": "BOOKTYPE.json",
+      "columns": 23
+    },
+    {
+      "table": "BOOKSTAFF",
+      "area": "catalog",
+      "description": "People who do each booking type.",
+      "file": "BOOKSTAFF.json",
+      "columns": 2
+    },
+    {
+      "table": "HOLIDAY",
+      "area": "admin",
+      "description": "Days the hospital is closed.",
+      "file": "HOLIDAY.json",
+      "columns": 3
+    },
+    {
+      "table": "CLIENT",
+      "area": "clients",
+      "description": "Pet owners.",
+      "file": "CLIENT.json",
+      "columns": 18
+    },
+    {
+      "table": "PET",
+      "area": "clients",
+      "description": "Pets and their owner.",
+      "file": "PET.json",
+      "columns": 18
+    },
+    {
+      "table": "PETWEIGHT",
+      "area": "clients",
+      "description": "Weight history of a pet.",
+      "file": "PETWEIGHT.json",
+      "columns": 7
+    },
+    {
+      "table": "PETVACCINE",
+      "area": "clients",
+      "description": "Vaccines given to a pet and when the next one is due.",
+      "file": "PETVACCINE.json",
+      "columns": 10
+    },
+    {
+      "table": "APPOINTMENT",
+      "area": "front",
+      "description": "Bookings: clinic, grooming and surgery visits and boarding stays, from the website, phone or desk.",
+      "file": "APPOINTMENT.json",
+      "columns": 28
+    },
+    {
+      "table": "APPTLOG",
+      "area": "front",
+      "description": "History of each appointment (booked, confirmed, checked in, moved, cancelled, ...).",
+      "file": "APPTLOG.json",
+      "columns": 5
+    },
+    {
+      "table": "VISIT",
+      "area": "clinical",
+      "description": "A visit or boarding stay in the hospital, from check-in to closed.",
+      "file": "VISIT.json",
+      "columns": 18
+    },
+    {
+      "table": "VISITROOM",
+      "area": "clinical",
+      "description": "Which room a visit was in, from when to when, and with whom.",
+      "file": "VISITROOM.json",
+      "columns": 8
+    },
+    {
+      "table": "VISITNOTE",
+      "area": "clinical",
+      "description": "Medical notes of a visit (SOAP fields and vitals), signing and addenda.",
+      "file": "VISITNOTE.json",
+      "columns": 17
+    },
+    {
+      "table": "DIAGNOSIS",
+      "area": "clinical",
+      "description": "Diagnoses recorded on a visit.",
+      "file": "DIAGNOSIS.json",
+      "columns": 8
+    },
+    {
+      "table": "ORDERLINE",
+      "area": "clinical",
+      "description": "Orders on a visit: treatments, medicines, tests, vaccines, grooming, boarding nights and extras, products and fees.",
+      "file": "ORDERLINE.json",
+      "columns": 20
+    },
+    {
+      "table": "RESULT",
+      "area": "clinical",
+      "description": "Test results, one row per result field, with the normal range and flag at the time.",
+      "file": "RESULT.json",
+      "columns": 15
+    },
+    {
+      "table": "VISITFILE",
+      "area": "clinical",
+      "description": "Files added to a visit (stored in the vault folder).",
+      "file": "VISITFILE.json",
+      "columns": 13
+    },
+    {
+      "table": "INVOICE",
+      "area": "money",
+      "description": "One invoice per visit, with totals, payments and balance.",
+      "file": "INVOICE.json",
+      "columns": 20
+    },
+    {
+      "table": "INVOICELINE",
+      "area": "money",
+      "description": "Lines of an invoice, copied from the visit orders or added at checkout.",
+      "file": "INVOICELINE.json",
+      "columns": 11
+    },
+    {
+      "table": "PAYMENT",
+      "area": "money",
+      "description": "Payments taken on invoices.",
+      "file": "PAYMENT.json",
+      "columns": 12
+    },
+    {
+      "table": "MAILLOG",
+      "area": "money",
+      "description": "Every email attempt to an owner (visit summary, invoice, statement, booking) and its result.",
+      "file": "MAILLOG.json",
+      "columns": 10
+    },
+    {
+      "table": "REMINDER",
+      "area": "clinical",
+      "description": "Contact log for due reminders (vaccines, rechecks, wellness).",
+      "file": "REMINDER.json",
+      "columns": 8
+    },
+    {
+      "table": "PAGEDOC",
+      "area": "website",
+      "description": "Content blocks of each public page.",
+      "file": "PAGEDOC.json",
+      "columns": 4
+    },
+    {
+      "table": "PAGEVER",
+      "area": "website",
+      "description": "Earlier versions of page content.",
+      "file": "PAGEVER.json",
+      "columns": 5
+    },
+    {
+      "table": "MEDIA",
+      "area": "website",
+      "description": "Media library: photos, videos and PDFs.",
+      "file": "MEDIA.json",
+      "columns": 15
+    },
+    {
+      "table": "ALBUM",
+      "area": "website",
+      "description": "Photo albums shown on the Media page.",
+      "file": "ALBUM.json",
+      "columns": 8
+    },
+    {
+      "table": "ALBUMITEM",
+      "area": "website",
+      "description": "Pictures in an album, in order.",
+      "file": "ALBUMITEM.json",
+      "columns": 3
+    },
+    {
+      "table": "MESSAGE",
+      "area": "website",
+      "description": "Messages sent from the website contact form.",
+      "file": "MESSAGE.json",
+      "columns": 12
+    },
+    {
+      "table": "NUMBERSEQ",
+      "area": "admin",
+      "description": "Yearly number counters for visit, invoice, payment and client numbers.",
+      "file": "NUMBERSEQ.json",
+      "columns": 3
+    }
+  ]
+}

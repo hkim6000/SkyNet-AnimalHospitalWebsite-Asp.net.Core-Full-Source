@@ -1,0 +1,21 @@
+<div class="aa-site aa-admin" id="aa-site" data-theme="light" style="{plhd_style}">
+<header class="aa-ahead">
+    <button type="button" class="aa-ibtn aa-burger" aria-label="Menu" onclick="AdminAlbumsJs.openNav()"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="aa-abrand" href="Admin"><svg class="aa-logo" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><rect width="40" height="40" rx="12" fill="var(--aa-accent)"/><ellipse cx="20" cy="25.5" rx="6.6" ry="5.6" fill="#fff"/><ellipse cx="11.6" cy="18.4" rx="2.7" ry="3.4" transform="rotate(-18 11.6 18.4)" fill="#fff"/><ellipse cx="16.6" cy="12.6" rx="2.8" ry="3.6" transform="rotate(-6 16.6 12.6)" fill="#fff"/><ellipse cx="23.4" cy="12.6" rx="2.8" ry="3.6" transform="rotate(6 23.4 12.6)" fill="#fff"/><ellipse cx="28.4" cy="18.4" rx="2.7" ry="3.4" transform="rotate(18 28.4 18.4)" fill="#fff"/></svg><b>{plhd_name}</b><small>Admin</small></a>
+    <span class="aa-demo" id="aa-demo">{plhd_demo}</span>
+    <span class="aa-grow"></span>
+    <a class="aa-who" id="aa-who" href="AdminAccount"></a>
+    <a class="aa-view" href="Home" target="_blank" rel="noopener">View site</a>
+    <button type="button" class="aa-out" onclick="AdminAlbumsJs.signOut()">Sign out</button>
+</header>
+<aside class="aa-side" id="aa-nav" aria-label="Admin">
+    <div class="aa-nav-top"><span>Menu</span><button type="button" class="aa-ibtn" aria-label="Close" onclick="AdminAlbumsJs.closeNav()"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <nav class="aa-menu" id="aa-menu"></nav>
+</aside>
+<div class="aa-scrim" id="aa-scrim" onclick="AdminAlbumsJs.closeNav()"></div>
+<main class="aa-amain" id="aa-main"><p class="aa-loading">Loading&hellip;</p></main>
+<div class="aa-modal" id="aa-modal" onclick="if(event.target===this)AdminAlbumsJs.closeModal()">
+    <div class="aa-mbox" role="dialog" aria-modal="true"><button type="button" class="aa-ibtn aa-mclose" aria-label="Close" onclick="AdminAlbumsJs.closeModal()"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div id="aa-mbody"></div></div>
+</div>
+<div class="aa-toast" id="aa-toast" role="status" aria-live="polite"></div>
+</div>

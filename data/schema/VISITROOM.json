@@ -1,0 +1,92 @@
+{
+  "table": "VISITROOM",
+  "area": "clinical",
+  "description": "Which room a visit was in, from when to when, and with whom.",
+  "primaryKey": [
+    "VR_ID"
+  ],
+  "columns": [
+    {
+      "name": "VR_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "VISIT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "VISIT.VISIT_ID"
+    },
+    {
+      "name": "ROOM_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "ROOM.ROOM_ID"
+    },
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "PURPOSE",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "default": "visit",
+      "values": [
+        "visit",
+        "special",
+        "emergency",
+        "surgery",
+        "recovery",
+        "grooming",
+        "boarding"
+      ]
+    },
+    {
+      "name": "IN_AT",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "OUT_AT",
+      "type": "datetime2",
+      "nullable": true,
+      "description": "Null while the visit is still in the room."
+    },
+    {
+      "name": "NOTE",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": ""
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_VISITROOM_VISIT",
+      "unique": false,
+      "columns": [
+        "VISIT_ID",
+        "IN_AT"
+      ]
+    },
+    {
+      "name": "IX_VISITROOM_ROOM",
+      "unique": false,
+      "columns": [
+        "ROOM_ID",
+        "OUT_AT"
+      ]
+    }
+  ],
+  "referencedBy": []
+}

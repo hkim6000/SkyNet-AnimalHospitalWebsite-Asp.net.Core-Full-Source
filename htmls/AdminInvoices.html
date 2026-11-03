@@ -1,0 +1,21 @@
+<div class="iv-site iv-admin" id="iv-site" data-qi="{plhd_qi}" data-qc="{plhd_qc}" data-theme="light" style="{plhd_style}">
+<header class="iv-ahead">
+    <button type="button" class="iv-ibtn iv-burger" aria-label="Menu" onclick="AdminInvoicesJs.openNav()"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="iv-abrand" href="Admin"><svg class="iv-logo" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><rect width="40" height="40" rx="12" fill="var(--iv-accent)"/><ellipse cx="20" cy="25.5" rx="6.6" ry="5.6" fill="#fff"/><ellipse cx="11.6" cy="18.4" rx="2.7" ry="3.4" transform="rotate(-18 11.6 18.4)" fill="#fff"/><ellipse cx="16.6" cy="12.6" rx="2.8" ry="3.6" transform="rotate(-6 16.6 12.6)" fill="#fff"/><ellipse cx="23.4" cy="12.6" rx="2.8" ry="3.6" transform="rotate(6 23.4 12.6)" fill="#fff"/><ellipse cx="28.4" cy="18.4" rx="2.7" ry="3.4" transform="rotate(18 28.4 18.4)" fill="#fff"/></svg><b>{plhd_name}</b><small>Admin</small></a>
+    <span class="iv-demo" id="iv-demo">{plhd_demo}</span>
+    <span class="iv-grow"></span>
+    <a class="iv-who" id="iv-who" href="AdminAccount"></a>
+    <a class="iv-view" href="Home" target="_blank" rel="noopener">View site</a>
+    <button type="button" class="iv-out" onclick="AdminInvoicesJs.signOut()">Sign out</button>
+</header>
+<aside class="iv-side" id="iv-nav" aria-label="Admin">
+    <div class="iv-nav-top"><span>Menu</span><button type="button" class="iv-ibtn" aria-label="Close" onclick="AdminInvoicesJs.closeNav()"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <nav class="iv-menu" id="iv-menu"></nav>
+</aside>
+<div class="iv-scrim" id="iv-scrim" onclick="AdminInvoicesJs.closeNav()"></div>
+<main class="iv-amain" id="iv-main"><p class="iv-loading">Loading&hellip;</p></main>
+<div class="iv-modal" id="iv-modal" onclick="if(event.target===this)AdminInvoicesJs.closeModal()">
+    <div class="iv-mbox" role="dialog" aria-modal="true"><button type="button" class="iv-ibtn iv-mclose" aria-label="Close" onclick="AdminInvoicesJs.closeModal()"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div id="iv-mbody"></div></div>
+</div>
+<div class="iv-toast" id="iv-toast" role="status" aria-live="polite"></div>
+</div>

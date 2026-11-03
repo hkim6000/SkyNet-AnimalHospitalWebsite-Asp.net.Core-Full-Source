@@ -1,0 +1,30 @@
+{
+  "table": "HOLIDAY",
+  "area": "admin",
+  "description": "Days the hospital is closed.",
+  "primaryKey": [
+    "HOLIDAY_DATE"
+  ],
+  "columns": [
+    {
+      "name": "HOLIDAY_DATE",
+      "type": "date",
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "HOLIDAY_NAME",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [],
+  "referencedBy": []
+}

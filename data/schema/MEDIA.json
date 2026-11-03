@@ -1,0 +1,128 @@
+{
+  "table": "MEDIA",
+  "area": "website",
+  "description": "Media library: photos, videos and PDFs.",
+  "primaryKey": [
+    "MEDIA_ID"
+  ],
+  "columns": [
+    {
+      "name": "MEDIA_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "KIND",
+      "type": "nvarchar",
+      "size": 10,
+      "nullable": false,
+      "default": "photo",
+      "values": [
+        "photo",
+        "video",
+        "doc"
+      ]
+    },
+    {
+      "name": "TITLE",
+      "type": "nvarchar",
+      "size": 120,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "ALT",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "TAGS",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "FULL_PATH",
+      "type": "nvarchar",
+      "size": 300,
+      "nullable": false,
+      "description": "Web path of the file under images/."
+    },
+    {
+      "name": "THUMB_PATH",
+      "type": "nvarchar",
+      "size": 300,
+      "nullable": false,
+      "default": "",
+      "description": "Web path of the thumbnail or cover."
+    },
+    {
+      "name": "SECONDS",
+      "type": "int",
+      "nullable": false,
+      "default": 0,
+      "description": "Video length."
+    },
+    {
+      "name": "PAGES",
+      "type": "int",
+      "nullable": false,
+      "default": 0,
+      "description": "PDF page count."
+    },
+    {
+      "name": "WIDTH",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "HEIGHT",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "BYTES",
+      "type": "bigint",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "ADDED_BY",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "ADDED_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "UX_MEDIA_PATH",
+      "unique": true,
+      "columns": [
+        "FULL_PATH"
+      ]
+    }
+  ],
+  "referencedBy": [
+    "ALBUMITEM.FULL_PATH"
+  ]
+}

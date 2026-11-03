@@ -1,0 +1,11 @@
+<div class="mc-site" id="mc-site" data-page="Media" data-theme="{plhd_theme}" style="{plhd_style}">
+{plhd_header}
+<main class="mc-main" id="mc-main" tabindex="-1">{plhd_main}</main>
+{plhd_footer}
+<div class="mc-lb" id="mc-lb" hidden role="dialog" aria-modal="true" aria-labelledby="mc-lbtitle">
+    <div class="mc-lbbar"><b id="mc-lbtitle"></b><span id="mc-lbnum"></span><button type="button" class="mc-lbbtn mc-lbx" aria-label="Close" onclick="MediaJs.lbClose()"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <button type="button" class="mc-lbbtn mc-lbp" aria-label="Previous photo" onclick="MediaJs.lbGo(-1)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <figure class="mc-lbfig" id="mc-lbfig"><img id="mc-lbimg" alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><figcaption id="mc-lbcap"></figcaption></figure>
+    <button type="button" class="mc-lbbtn mc-lbn" aria-label="Next photo" onclick="MediaJs.lbGo(1)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+</div>
+</div>

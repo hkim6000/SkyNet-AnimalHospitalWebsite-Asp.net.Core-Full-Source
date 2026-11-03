@@ -1,0 +1,54 @@
+{
+  "table": "BREED",
+  "area": "catalog",
+  "description": "Breed suggestions per species.",
+  "primaryKey": [
+    "BREED_ID"
+  ],
+  "columns": [
+    {
+      "name": "BREED_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "SPECIES_KEY",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "references": "SPECIES.SPECIES_KEY"
+    },
+    {
+      "name": "BREED_NAME",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false
+    },
+    {
+      "name": "SIZE_HINT",
+      "type": "nvarchar",
+      "size": 10,
+      "nullable": false,
+      "default": "",
+      "values": [
+        "",
+        "small",
+        "medium",
+        "large"
+      ]
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_BREED_SPECIES",
+      "unique": false,
+      "columns": [
+        "SPECIES_KEY",
+        "BREED_NAME"
+      ]
+    }
+  ],
+  "referencedBy": []
+}

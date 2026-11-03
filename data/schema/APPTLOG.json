@@ -1,0 +1,54 @@
+{
+  "table": "APPTLOG",
+  "area": "front",
+  "description": "History of each appointment (booked, confirmed, checked in, moved, cancelled, ...).",
+  "primaryKey": [
+    "LOG_ID"
+  ],
+  "columns": [
+    {
+      "name": "LOG_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "APPT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "APPOINTMENT.APPT_ID"
+    },
+    {
+      "name": "LOG_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "LOG_TEXT",
+      "type": "nvarchar",
+      "size": 300,
+      "nullable": false
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_APPTLOG_APPT",
+      "unique": false,
+      "columns": [
+        "APPT_ID",
+        "LOG_UTC"
+      ]
+    }
+  ],
+  "referencedBy": []
+}

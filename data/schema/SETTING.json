@@ -1,0 +1,33 @@
+{
+  "table": "SETTING",
+  "area": "admin",
+  "description": "Hospital settings as key/value pairs (name, contact, hours, booking, boarding, reminder, billing and website options). Edited in Settings.",
+  "primaryKey": [
+    "SKEY"
+  ],
+  "columns": [
+    {
+      "name": "SKEY",
+      "type": "nvarchar",
+      "size": 100,
+      "nullable": false,
+      "primaryKey": true,
+      "description": "Setting name, e.g. name, phone, hours, slot.minutes, tax.rate, stay.vax.dog."
+    },
+    {
+      "name": "SVALUE",
+      "type": "nvarchar",
+      "size": "max",
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [],
+  "referencedBy": []
+}

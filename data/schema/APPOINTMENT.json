@@ -1,0 +1,260 @@
+{
+  "table": "APPOINTMENT",
+  "area": "front",
+  "description": "Bookings: clinic, grooming and surgery visits and boarding stays, from the website, phone or desk.",
+  "primaryKey": [
+    "APPT_ID"
+  ],
+  "columns": [
+    {
+      "name": "APPT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "APPT_CODE",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "description": "Code given to the owner, e.g. CAH-7KQ2ZD (stays CAH-S...)."
+    },
+    {
+      "name": "CLIENT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "CLIENT.CLIENT_ID"
+    },
+    {
+      "name": "PET_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "PET.PET_ID"
+    },
+    {
+      "name": "BOOKTYPE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "BOOKTYPE.BOOKTYPE_ID"
+    },
+    {
+      "name": "VISIT_TYPE",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "default": "clinic",
+      "values": [
+        "clinic",
+        "grooming",
+        "surgery",
+        "boarding"
+      ]
+    },
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "ROOMTYPE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "ROOMTYPE.ROOMTYPE_ID"
+    },
+    {
+      "name": "ROOM_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "ROOM.ROOM_ID"
+    },
+    {
+      "name": "START_AT",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "END_AT",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "MINUTES",
+      "type": "int",
+      "nullable": false,
+      "default": 30
+    },
+    {
+      "name": "PROC_AT",
+      "type": "datetime2",
+      "nullable": true,
+      "description": "Surgery: procedure start."
+    },
+    {
+      "name": "PROC_MINUTES",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "PICKUP_AT",
+      "type": "datetime2",
+      "nullable": true,
+      "description": "Surgery: pick-up time."
+    },
+    {
+      "name": "ADDONS",
+      "type": "nvarchar",
+      "size": 400,
+      "nullable": false,
+      "default": "",
+      "description": "Boarding: comma list of ITEM_ID extras."
+    },
+    {
+      "name": "EST_PRICE",
+      "type": "decimal",
+      "precision": 12,
+      "scale": 2,
+      "nullable": false,
+      "default": 0,
+      "description": "Estimated price shown when booked."
+    },
+    {
+      "name": "SOURCE",
+      "type": "nvarchar",
+      "size": 10,
+      "nullable": false,
+      "default": "web",
+      "values": [
+        "web",
+        "phone",
+        "desk"
+      ]
+    },
+    {
+      "name": "STATUS",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "default": "booked",
+      "values": [
+        "booked",
+        "confirmed",
+        "checkedin",
+        "noshow",
+        "cancelled"
+      ]
+    },
+    {
+      "name": "VISIT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "VISIT.VISIT_ID",
+      "description": "Visit opened at check-in."
+    },
+    {
+      "name": "NEW_CLIENT",
+      "type": "bit",
+      "nullable": false,
+      "default": 0,
+      "description": "1 = booked online by a new client."
+    },
+    {
+      "name": "VAX_PENDING",
+      "type": "bit",
+      "nullable": false,
+      "default": 0,
+      "description": "Boarding: 1 = required vaccines not yet confirmed."
+    },
+    {
+      "name": "NOTE",
+      "type": "nvarchar",
+      "size": 600,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "DESK_NOTE",
+      "type": "nvarchar",
+      "size": 600,
+      "nullable": false,
+      "default": "",
+      "description": "Front desk note."
+    },
+    {
+      "name": "CANCEL_REASON",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "CREATED_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "CREATED_BY",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "web",
+      "references": "STAFF.STAFF_ID",
+      "description": "STAFF_ID, or web for online bookings."
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "UX_APPT_CODE",
+      "unique": true,
+      "columns": [
+        "APPT_CODE"
+      ]
+    },
+    {
+      "name": "IX_APPT_START",
+      "unique": false,
+      "columns": [
+        "START_AT",
+        "STATUS"
+      ]
+    },
+    {
+      "name": "IX_APPT_STAFF",
+      "unique": false,
+      "columns": [
+        "STAFF_ID",
+        "START_AT"
+      ]
+    },
+    {
+      "name": "IX_APPT_PET",
+      "unique": false,
+      "columns": [
+        "PET_ID"
+      ]
+    }
+  ],
+  "referencedBy": [
+    "APPTLOG.APPT_ID",
+    "VISIT.APPT_ID"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "table": "STAFFPERM",
+  "area": "admin",
+  "description": "Rights of one person on one menu page.",
+  "primaryKey": [
+    "STAFF_ID",
+    "MENU_KEY"
+  ],
+  "columns": [
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true,
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "MENU_KEY",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true,
+      "references": "MENU.MENU_KEY"
+    },
+    {
+      "name": "RIGHTS",
+      "type": "nvarchar",
+      "size": 10,
+      "nullable": false,
+      "default": "V",
+      "description": "Letters from V, A, E, D, X."
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [],
+  "referencedBy": []
+}

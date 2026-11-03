@@ -1,0 +1,188 @@
+{
+  "table": "ORDERLINE",
+  "area": "clinical",
+  "description": "Orders on a visit: treatments, medicines, tests, vaccines, grooming, boarding nights and extras, products and fees.",
+  "primaryKey": [
+    "LINE_ID"
+  ],
+  "columns": [
+    {
+      "name": "LINE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "VISIT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "VISIT.VISIT_ID"
+    },
+    {
+      "name": "ITEM_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "ITEM.ITEM_ID"
+    },
+    {
+      "name": "ITEM_NAME",
+      "type": "nvarchar",
+      "size": 120,
+      "nullable": false,
+      "description": "Item name at the time of the order."
+    },
+    {
+      "name": "ITEM_TYPE",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "values": [
+        "practice",
+        "medicine",
+        "test",
+        "vaccine",
+        "grooming",
+        "boarding",
+        "product",
+        "fee"
+      ]
+    },
+    {
+      "name": "QTY",
+      "type": "decimal",
+      "precision": 10,
+      "scale": 2,
+      "nullable": false,
+      "default": 1
+    },
+    {
+      "name": "UNIT",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "default": "each"
+    },
+    {
+      "name": "UNIT_PRICE",
+      "type": "decimal",
+      "precision": 12,
+      "scale": 2,
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "TAXABLE",
+      "type": "bit",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "DOSE",
+      "type": "nvarchar",
+      "size": 120,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "INSTRUCTIONS",
+      "type": "nvarchar",
+      "size": 600,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "DISPENSE",
+      "type": "nvarchar",
+      "size": 10,
+      "nullable": false,
+      "default": "clinic",
+      "values": [
+        "clinic",
+        "home"
+      ],
+      "description": "home = goes home with the owner."
+    },
+    {
+      "name": "STATUS",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "default": "ordered",
+      "values": [
+        "ordered",
+        "done",
+        "cancelled"
+      ]
+    },
+    {
+      "name": "NOTE",
+      "type": "nvarchar",
+      "size": 300,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "ORDERED_BY",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "ORDERED_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "DONE_BY",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "DONE_UTC",
+      "type": "datetime2",
+      "nullable": true
+    },
+    {
+      "name": "LINE_ORDER",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_ORDERLINE_VISIT",
+      "unique": false,
+      "columns": [
+        "VISIT_ID",
+        "LINE_ORDER"
+      ]
+    },
+    {
+      "name": "IX_ORDERLINE_ITEM",
+      "unique": false,
+      "columns": [
+        "ITEM_ID"
+      ]
+    }
+  ],
+  "referencedBy": [
+    "INVOICELINE.LINE_ID",
+    "RESULT.LINE_ID",
+    "VISITFILE.LINE_ID"
+  ]
+}

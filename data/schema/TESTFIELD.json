@@ -1,0 +1,98 @@
+{
+  "table": "TESTFIELD",
+  "area": "catalog",
+  "description": "Result fields of a test item with units and normal ranges (optionally per species).",
+  "primaryKey": [
+    "FIELD_ID"
+  ],
+  "columns": [
+    {
+      "name": "FIELD_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "ITEM_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "ITEM.ITEM_ID"
+    },
+    {
+      "name": "FIELD_NAME",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false
+    },
+    {
+      "name": "UNIT",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "SPECIES_KEY",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "default": "",
+      "references": "SPECIES.SPECIES_KEY",
+      "description": "Empty = range for all species; otherwise this species only."
+    },
+    {
+      "name": "LOW_VALUE",
+      "type": "decimal",
+      "precision": 12,
+      "scale": 3,
+      "nullable": true
+    },
+    {
+      "name": "HIGH_VALUE",
+      "type": "decimal",
+      "precision": 12,
+      "scale": 3,
+      "nullable": true
+    },
+    {
+      "name": "DECIMALS",
+      "type": "int",
+      "nullable": false,
+      "default": 1
+    },
+    {
+      "name": "IS_TEXT",
+      "type": "bit",
+      "nullable": false,
+      "default": 0,
+      "description": "1 = text result instead of a number."
+    },
+    {
+      "name": "FIELD_ORDER",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_TESTFIELD_ITEM",
+      "unique": false,
+      "columns": [
+        "ITEM_ID",
+        "FIELD_ORDER"
+      ]
+    }
+  ],
+  "referencedBy": [
+    "RESULT.FIELD_ID"
+  ]
+}

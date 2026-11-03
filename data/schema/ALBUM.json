@@ -1,0 +1,67 @@
+{
+  "table": "ALBUM",
+  "area": "website",
+  "description": "Photo albums shown on the Media page.",
+  "primaryKey": [
+    "ALBUM_ID"
+  ],
+  "columns": [
+    {
+      "name": "ALBUM_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "TITLE",
+      "type": "nvarchar",
+      "size": 120,
+      "nullable": false
+    },
+    {
+      "name": "TEXT",
+      "type": "nvarchar",
+      "size": 600,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "COVER",
+      "type": "nvarchar",
+      "size": 300,
+      "nullable": false,
+      "default": "",
+      "description": "Web path of the cover picture."
+    },
+    {
+      "name": "ALBUM_DATE",
+      "type": "date",
+      "nullable": false
+    },
+    {
+      "name": "PUBLISHED",
+      "type": "bit",
+      "nullable": false,
+      "default": 1
+    },
+    {
+      "name": "ADDED_BY",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [],
+  "referencedBy": [
+    "ALBUMITEM.ALBUM_ID"
+  ]
+}

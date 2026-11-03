@@ -1,0 +1,111 @@
+{
+  "table": "MENU",
+  "area": "admin",
+  "description": "Admin menu pages grouped into sections, with the rights each page offers and the name of its extra right.",
+  "primaryKey": [
+    "MENU_KEY"
+  ],
+  "columns": [
+    {
+      "name": "MENU_KEY",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "SECTION_KEY",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "values": [
+        "front",
+        "clinical",
+        "boarding",
+        "people",
+        "money",
+        "catalog",
+        "reports",
+        "website",
+        "admin"
+      ]
+    },
+    {
+      "name": "SECTION_NAME",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false
+    },
+    {
+      "name": "SECTION_ORDER",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "MENU_NAME",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false
+    },
+    {
+      "name": "PAGE_NAME",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false,
+      "description": "Admin page class name (URL)."
+    },
+    {
+      "name": "MENU_ORDER",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "RIGHTS",
+      "type": "nvarchar",
+      "size": 10,
+      "nullable": false,
+      "default": "VAED",
+      "description": "Rights the page offers: letters from V (view), A (add), E (edit), D (delete), X (extra)."
+    },
+    {
+      "name": "EXTRA_NAME",
+      "type": "nvarchar",
+      "size": 40,
+      "nullable": false,
+      "default": "",
+      "description": "Name of the X right on this page (e.g. Cancel, Void, Sign records)."
+    },
+    {
+      "name": "HINT",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "SHOW_MENU",
+      "type": "bit",
+      "nullable": false,
+      "default": 1
+    },
+    {
+      "name": "ACTIVE",
+      "type": "bit",
+      "nullable": false,
+      "default": 1
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [],
+  "referencedBy": [
+    "ROLEPERM.MENU_KEY",
+    "STAFFPERM.MENU_KEY"
+  ]
+}

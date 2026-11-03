@@ -1,0 +1,107 @@
+{
+  "table": "MESSAGE",
+  "area": "website",
+  "description": "Messages sent from the website contact form.",
+  "primaryKey": [
+    "MSG_ID"
+  ],
+  "columns": [
+    {
+      "name": "MSG_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "SENDER_NAME",
+      "type": "nvarchar",
+      "size": 100,
+      "nullable": false
+    },
+    {
+      "name": "EMAIL",
+      "type": "nvarchar",
+      "size": 120,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "PHONE",
+      "type": "nvarchar",
+      "size": 30,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "TOPIC",
+      "type": "nvarchar",
+      "size": 40,
+      "nullable": false,
+      "default": "",
+      "values": [
+        "Appointments",
+        "Boarding",
+        "Grooming",
+        "Prices",
+        "Records",
+        "New client",
+        "Other"
+      ]
+    },
+    {
+      "name": "MSG_TEXT",
+      "type": "nvarchar",
+      "size": 2000,
+      "nullable": false
+    },
+    {
+      "name": "RECEIVED_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "IS_READ",
+      "type": "bit",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "IS_DONE",
+      "type": "bit",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "REPLY_NOTE",
+      "type": "nvarchar",
+      "size": 1000,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "HANDLED_BY",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_MESSAGE_UTC",
+      "unique": false,
+      "columns": [
+        "RECEIVED_UTC"
+      ]
+    }
+  ],
+  "referencedBy": []
+}

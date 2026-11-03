@@ -1,0 +1,97 @@
+{
+  "table": "MAILLOG",
+  "area": "money",
+  "description": "Every email attempt to an owner (visit summary, invoice, statement, booking) and its result.",
+  "primaryKey": [
+    "MAIL_ID"
+  ],
+  "columns": [
+    {
+      "name": "MAIL_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "MAIL_KIND",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "values": [
+        "visit",
+        "invoice",
+        "statement",
+        "booking"
+      ]
+    },
+    {
+      "name": "CLIENT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "CLIENT.CLIENT_ID"
+    },
+    {
+      "name": "INVOICE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "INVOICE.INVOICE_ID"
+    },
+    {
+      "name": "VISIT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "VISIT.VISIT_ID"
+    },
+    {
+      "name": "TO_ADDR",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false
+    },
+    {
+      "name": "SUBJECT",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false
+    },
+    {
+      "name": "SENT_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "RESULT",
+      "type": "nvarchar",
+      "size": 300,
+      "nullable": false,
+      "default": "",
+      "description": "Sent, or the reason it was not sent."
+    },
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_MAILLOG_CLIENT",
+      "unique": false,
+      "columns": [
+        "CLIENT_ID",
+        "SENT_UTC"
+      ]
+    }
+  ],
+  "referencedBy": []
+}

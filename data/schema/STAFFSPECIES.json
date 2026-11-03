@@ -1,0 +1,29 @@
+{
+  "table": "STAFFSPECIES",
+  "area": "admin",
+  "description": "Species each vet, technician or groomer sees.",
+  "primaryKey": [
+    "STAFF_ID",
+    "SPECIES_KEY"
+  ],
+  "columns": [
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true,
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "SPECIES_KEY",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "primaryKey": true,
+      "references": "SPECIES.SPECIES_KEY"
+    }
+  ],
+  "indexes": [],
+  "referencedBy": []
+}

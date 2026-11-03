@@ -1,0 +1,36 @@
+{
+  "table": "ALBUMITEM",
+  "area": "website",
+  "description": "Pictures in an album, in order.",
+  "primaryKey": [
+    "ALBUM_ID",
+    "FULL_PATH"
+  ],
+  "columns": [
+    {
+      "name": "ALBUM_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true,
+      "references": "ALBUM.ALBUM_ID"
+    },
+    {
+      "name": "FULL_PATH",
+      "type": "nvarchar",
+      "size": 300,
+      "nullable": false,
+      "primaryKey": true,
+      "references": "MEDIA.FULL_PATH",
+      "description": "MEDIA.FULL_PATH of the picture."
+    },
+    {
+      "name": "ITEM_ORDER",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    }
+  ],
+  "indexes": [],
+  "referencedBy": []
+}

@@ -1,0 +1,78 @@
+{
+  "table": "DIAGNOSIS",
+  "area": "clinical",
+  "description": "Diagnoses recorded on a visit.",
+  "primaryKey": [
+    "DX_ID"
+  ],
+  "columns": [
+    {
+      "name": "DX_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "VISIT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "VISIT.VISIT_ID"
+    },
+    {
+      "name": "PET_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "PET.PET_ID"
+    },
+    {
+      "name": "DX_TEXT",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false
+    },
+    {
+      "name": "DX_STATUS",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "default": "active",
+      "values": [
+        "active",
+        "ruleout",
+        "resolved"
+      ]
+    },
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "CREATED_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_DIAGNOSIS_PET",
+      "unique": false,
+      "columns": [
+        "PET_ID",
+        "CREATED_UTC"
+      ]
+    }
+  ],
+  "referencedBy": []
+}

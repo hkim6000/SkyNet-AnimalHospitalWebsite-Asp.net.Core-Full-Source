@@ -1,0 +1,148 @@
+{
+  "table": "VISITNOTE",
+  "area": "clinical",
+  "description": "Medical notes of a visit (SOAP fields and vitals), signing and addenda.",
+  "primaryKey": [
+    "NOTE_ID"
+  ],
+  "columns": [
+    {
+      "name": "NOTE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "VISIT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "VISIT.VISIT_ID"
+    },
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "NOTE_KIND",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "default": "exam",
+      "values": [
+        "exam",
+        "surgery",
+        "grooming",
+        "progress",
+        "phone"
+      ]
+    },
+    {
+      "name": "SUBJECTIVE",
+      "type": "nvarchar",
+      "size": "max",
+      "nullable": false,
+      "default": "",
+      "description": "What the owner says (history)."
+    },
+    {
+      "name": "OBJECTIVE",
+      "type": "nvarchar",
+      "size": "max",
+      "nullable": false,
+      "default": "",
+      "description": "What we found (exam findings)."
+    },
+    {
+      "name": "ASSESSMENT",
+      "type": "nvarchar",
+      "size": "max",
+      "nullable": false,
+      "default": "",
+      "description": "Assessment."
+    },
+    {
+      "name": "PLAN_TEXT",
+      "type": "nvarchar",
+      "size": "max",
+      "nullable": false,
+      "default": "",
+      "description": "Plan."
+    },
+    {
+      "name": "TEMP_F",
+      "type": "decimal",
+      "precision": 5,
+      "scale": 1,
+      "nullable": true
+    },
+    {
+      "name": "HEART_RATE",
+      "type": "int",
+      "nullable": true
+    },
+    {
+      "name": "RESP_RATE",
+      "type": "int",
+      "nullable": true
+    },
+    {
+      "name": "WEIGHT_LB",
+      "type": "decimal",
+      "precision": 7,
+      "scale": 2,
+      "nullable": true
+    },
+    {
+      "name": "PARENT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "VISITNOTE.NOTE_ID",
+      "description": "Addendum: the signed note it belongs to."
+    },
+    {
+      "name": "CREATED_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "SIGNED_UTC",
+      "type": "datetime2",
+      "nullable": true,
+      "description": "Null = not signed yet; a signed note is locked."
+    },
+    {
+      "name": "SIGNED_BY",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_VISITNOTE_VISIT",
+      "unique": false,
+      "columns": [
+        "VISIT_ID",
+        "CREATED_UTC"
+      ]
+    }
+  ],
+  "referencedBy": [
+    "VISITNOTE.PARENT_ID"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "table": "SPECIES",
+  "area": "catalog",
+  "description": "Kinds of animals the hospital sees.",
+  "primaryKey": [
+    "SPECIES_KEY"
+  ],
+  "columns": [
+    {
+      "name": "SPECIES_KEY",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "SPECIES_NAME",
+      "type": "nvarchar",
+      "size": 40,
+      "nullable": false
+    },
+    {
+      "name": "PLURAL_NAME",
+      "type": "nvarchar",
+      "size": 40,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "HAS_SIZE",
+      "type": "bit",
+      "nullable": false,
+      "default": 0,
+      "description": "1 = pets of this species have a size (small, medium, large) that can change prices and lengths."
+    },
+    {
+      "name": "SPECIES_ORDER",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "ACTIVE",
+      "type": "bit",
+      "nullable": false,
+      "default": 1
+    }
+  ],
+  "indexes": [],
+  "referencedBy": [
+    "BREED.SPECIES_KEY",
+    "PET.SPECIES_KEY",
+    "STAFFSPECIES.SPECIES_KEY",
+    "TESTFIELD.SPECIES_KEY"
+  ]
+}

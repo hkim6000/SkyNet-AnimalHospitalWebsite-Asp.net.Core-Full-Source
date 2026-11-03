@@ -1,0 +1,96 @@
+{
+  "table": "PETVACCINE",
+  "area": "clients",
+  "description": "Vaccines given to a pet and when the next one is due.",
+  "primaryKey": [
+    "VAX_ID"
+  ],
+  "columns": [
+    {
+      "name": "VAX_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "PET_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "PET.PET_ID"
+    },
+    {
+      "name": "ITEM_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "ITEM.ITEM_ID"
+    },
+    {
+      "name": "VAX_NAME",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false
+    },
+    {
+      "name": "GIVEN_DATE",
+      "type": "date",
+      "nullable": false
+    },
+    {
+      "name": "DUE_DATE",
+      "type": "date",
+      "nullable": false
+    },
+    {
+      "name": "VISIT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "VISIT.VISIT_ID"
+    },
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "NOTE",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_PETVACCINE_PET",
+      "unique": false,
+      "columns": [
+        "PET_ID",
+        "VAX_NAME",
+        "DUE_DATE"
+      ]
+    },
+    {
+      "name": "IX_PETVACCINE_DUE",
+      "unique": false,
+      "columns": [
+        "DUE_DATE"
+      ]
+    }
+  ],
+  "referencedBy": []
+}

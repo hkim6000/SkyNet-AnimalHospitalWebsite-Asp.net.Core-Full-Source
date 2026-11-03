@@ -1,0 +1,69 @@
+{
+  "table": "ROOM",
+  "area": "rooms",
+  "description": "Rooms, tables and boarding runs.",
+  "primaryKey": [
+    "ROOM_ID"
+  ],
+  "columns": [
+    {
+      "name": "ROOM_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "ROOMTYPE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "ROOMTYPE.ROOMTYPE_ID"
+    },
+    {
+      "name": "ROOM_NAME",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false
+    },
+    {
+      "name": "NOTE",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "ROOM_ORDER",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "ACTIVE",
+      "type": "bit",
+      "nullable": false,
+      "default": 1
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_ROOM_TYPE",
+      "unique": false,
+      "columns": [
+        "ROOMTYPE_ID"
+      ]
+    }
+  ],
+  "referencedBy": [
+    "APPOINTMENT.ROOM_ID",
+    "STAFF.HOME_ROOM_ID",
+    "VISITROOM.ROOM_ID"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "table": "STAFFSESSION",
+  "area": "admin",
+  "description": "Signed-in sessions (8 hours, renewed while working).",
+  "primaryKey": [
+    "TOKEN"
+  ],
+  "columns": [
+    {
+      "name": "TOKEN",
+      "type": "nvarchar",
+      "size": 64,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "EXPIRES_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "CREATED_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "IP",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false,
+      "default": ""
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_STAFFSESSION_STAFF",
+      "unique": false,
+      "columns": [
+        "STAFF_ID"
+      ]
+    }
+  ],
+  "referencedBy": []
+}

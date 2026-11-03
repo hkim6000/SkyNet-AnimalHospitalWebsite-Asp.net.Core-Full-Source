@@ -1,0 +1,67 @@
+{
+  "table": "ACTIVITY",
+  "area": "admin",
+  "description": "Activity log: who did what and when, including refused actions and failed sign-ins.",
+  "primaryKey": [
+    "ACT_ID"
+  ],
+  "columns": [
+    {
+      "name": "ACT_ID",
+      "type": "bigint",
+      "nullable": false,
+      "identity": true,
+      "primaryKey": true
+    },
+    {
+      "name": "ACT_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "ACTION",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false
+    },
+    {
+      "name": "TARGET",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "OK",
+      "type": "bit",
+      "nullable": false,
+      "default": 1,
+      "description": "0 = refused or failed."
+    },
+    {
+      "name": "IP",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false,
+      "default": ""
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_ACTIVITY_UTC",
+      "unique": false,
+      "columns": [
+        "ACT_UTC"
+      ]
+    }
+  ],
+  "referencedBy": []
+}

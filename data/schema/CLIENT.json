@@ -1,0 +1,170 @@
+{
+  "table": "CLIENT",
+  "area": "clients",
+  "description": "Pet owners.",
+  "primaryKey": [
+    "CLIENT_ID"
+  ],
+  "columns": [
+    {
+      "name": "CLIENT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "CLIENT_NO",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "description": "Client number, e.g. C01001."
+    },
+    {
+      "name": "FIRST_NAME",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false
+    },
+    {
+      "name": "LAST_NAME",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false
+    },
+    {
+      "name": "PHONE",
+      "type": "nvarchar",
+      "size": 30,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "PHONE2",
+      "type": "nvarchar",
+      "size": 30,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "EMAIL",
+      "type": "nvarchar",
+      "size": 120,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "CONTACT_PREF",
+      "type": "nvarchar",
+      "size": 10,
+      "nullable": false,
+      "default": "phone",
+      "values": [
+        "phone",
+        "text",
+        "email"
+      ]
+    },
+    {
+      "name": "ADDRESS1",
+      "type": "nvarchar",
+      "size": 120,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "CITY",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "STATE",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "ZIP",
+      "type": "nvarchar",
+      "size": 12,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "NOTE",
+      "type": "nvarchar",
+      "size": 1000,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "ALERT",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": "",
+      "description": "Owner note shown to staff."
+    },
+    {
+      "name": "ACTIVE",
+      "type": "bit",
+      "nullable": false,
+      "default": 1
+    },
+    {
+      "name": "CREATED_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "CREATED_BY",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID",
+      "description": "STAFF_ID, or web when created by an online booking."
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "UX_CLIENT_NO",
+      "unique": true,
+      "columns": [
+        "CLIENT_NO"
+      ]
+    },
+    {
+      "name": "IX_CLIENT_NAME",
+      "unique": false,
+      "columns": [
+        "LAST_NAME",
+        "FIRST_NAME"
+      ]
+    },
+    {
+      "name": "IX_CLIENT_EMAIL",
+      "unique": false,
+      "columns": [
+        "EMAIL"
+      ]
+    }
+  ],
+  "referencedBy": [
+    "APPOINTMENT.CLIENT_ID",
+    "INVOICE.CLIENT_ID",
+    "MAILLOG.CLIENT_ID",
+    "PAYMENT.CLIENT_ID",
+    "PET.CLIENT_ID",
+    "VISIT.CLIENT_ID"
+  ]
+}

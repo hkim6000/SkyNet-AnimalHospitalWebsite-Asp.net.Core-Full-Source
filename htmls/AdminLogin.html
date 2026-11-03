@@ -1,0 +1,24 @@
+<div class="lg-site lg-login" id="lg-site" data-theme="light" style="{plhd_style}">
+<img class="lg-lbg" src="images/hospital/full/reception.webp" alt="">
+<main class="lg-main lg-lwrap">
+    <div class="lg-lcard">
+        <a class="lg-lbrand" href="Home"><svg class="lg-logo" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="var(--lg-accent)"/><ellipse cx="20" cy="25.5" rx="6.6" ry="5.6" fill="#fff"/><ellipse cx="11.6" cy="18.4" rx="2.7" ry="3.4" transform="rotate(-18 11.6 18.4)" fill="#fff"/><ellipse cx="16.6" cy="12.6" rx="2.8" ry="3.6" transform="rotate(-6 16.6 12.6)" fill="#fff"/><ellipse cx="23.4" cy="12.6" rx="2.8" ry="3.6" transform="rotate(6 23.4 12.6)" fill="#fff"/><ellipse cx="28.4" cy="18.4" rx="2.7" ry="3.4" transform="rotate(18 28.4 18.4)" fill="#fff"/></svg><b>{plhd_brand}</b><span>Admin</span></a>
+        <h1>Staff sign in</h1>
+        {plhd_demo}
+        <form class="lg-lform" id="lg-form" onsubmit="return AdminLoginJs.signIn()" novalidate>
+            <label class="lg-field" for="lg-user"><span>User name</span><input type="text" id="lg-user" maxlength="40" autocomplete="username" autocapitalize="none" value="{plhd_user}"></label>
+            <label class="lg-field" for="lg-pass"><span>Password</span><input type="password" id="lg-pass" maxlength="100" autocomplete="current-password" value="{plhd_pass}"></label>
+            <em class="lg-err" id="lg-e-pass"></em>
+            <button type="submit" class="lg-btn lg-btn-accent lg-btn-wide">Sign in</button>
+        </form>
+        <form class="lg-lform" id="lg-first" onsubmit="return AdminLoginJs.first()" novalidate hidden>
+            <p class="lg-lhint"><b>Choose your own password.</b> A manager set the password you just used. Pick a new one that only you know.</p>
+            <label class="lg-field" for="lg-new"><span>New password</span><input type="password" id="lg-new" maxlength="100" autocomplete="new-password"></label>
+            <label class="lg-field" for="lg-again"><span>New password again</span><input type="password" id="lg-again" maxlength="100" autocomplete="new-password"></label>
+            <em class="lg-err" id="lg-e-new"></em>
+            <button type="submit" class="lg-btn lg-btn-accent lg-btn-wide">Save and sign in</button>
+        </form>
+        <a class="lg-lback" href="Home">&larr; Back to the hospital website</a>
+    </div>
+</main>
+</div>

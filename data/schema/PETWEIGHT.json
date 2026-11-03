@@ -1,0 +1,69 @@
+{
+  "table": "PETWEIGHT",
+  "area": "clients",
+  "description": "Weight history of a pet.",
+  "primaryKey": [
+    "WEIGHT_ID"
+  ],
+  "columns": [
+    {
+      "name": "WEIGHT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "PET_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "PET.PET_ID"
+    },
+    {
+      "name": "WEIGHED_AT",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "LB",
+      "type": "decimal",
+      "precision": 7,
+      "scale": 2,
+      "nullable": false
+    },
+    {
+      "name": "VISIT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "VISIT.VISIT_ID"
+    },
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_PETWEIGHT_PET",
+      "unique": false,
+      "columns": [
+        "PET_ID",
+        "WEIGHED_AT"
+      ]
+    }
+  ],
+  "referencedBy": []
+}

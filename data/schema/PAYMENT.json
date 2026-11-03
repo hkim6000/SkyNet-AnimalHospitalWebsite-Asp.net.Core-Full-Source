@@ -1,0 +1,122 @@
+{
+  "table": "PAYMENT",
+  "area": "money",
+  "description": "Payments taken on invoices.",
+  "primaryKey": [
+    "PAY_ID"
+  ],
+  "columns": [
+    {
+      "name": "PAY_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "PAY_NO",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "description": "Payment number, e.g. PAY2026-00001 (restarts each year)."
+    },
+    {
+      "name": "INVOICE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "INVOICE.INVOICE_ID"
+    },
+    {
+      "name": "CLIENT_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "references": "CLIENT.CLIENT_ID"
+    },
+    {
+      "name": "METHOD",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "values": [
+        "card",
+        "cash",
+        "check",
+        "other"
+      ]
+    },
+    {
+      "name": "AMOUNT",
+      "type": "decimal",
+      "precision": 12,
+      "scale": 2,
+      "nullable": false
+    },
+    {
+      "name": "REFERENCE",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false,
+      "default": "",
+      "description": "Card last four digits, check number, ..."
+    },
+    {
+      "name": "PAID_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    },
+    {
+      "name": "IS_VOID",
+      "type": "bit",
+      "nullable": false,
+      "default": 0,
+      "description": "1 = voided; no longer counts."
+    },
+    {
+      "name": "VOID_REASON",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "UX_PAYMENT_NO",
+      "unique": true,
+      "columns": [
+        "PAY_NO"
+      ]
+    },
+    {
+      "name": "IX_PAYMENT_INV",
+      "unique": false,
+      "columns": [
+        "INVOICE_ID"
+      ]
+    },
+    {
+      "name": "IX_PAYMENT_UTC",
+      "unique": false,
+      "columns": [
+        "PAID_UTC"
+      ]
+    }
+  ],
+  "referencedBy": []
+}

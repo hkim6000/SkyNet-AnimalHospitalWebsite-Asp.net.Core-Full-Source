@@ -1,0 +1,234 @@
+{
+  "table": "STAFF",
+  "area": "admin",
+  "description": "People who sign in to the admin, plus their website profile for vets, technicians and groomers.",
+  "primaryKey": [
+    "STAFF_ID"
+  ],
+  "columns": [
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "LOGIN",
+      "type": "nvarchar",
+      "size": 40,
+      "nullable": false,
+      "description": "User name (lower case, unique)."
+    },
+    {
+      "name": "STAFF_NAME",
+      "type": "nvarchar",
+      "size": 100,
+      "nullable": false
+    },
+    {
+      "name": "TITLE",
+      "type": "nvarchar",
+      "size": 100,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "ROLE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "ROLE.ROLE_ID"
+    },
+    {
+      "name": "PROVIDER_TYPE",
+      "type": "nvarchar",
+      "size": 20,
+      "nullable": false,
+      "default": "",
+      "values": [
+        "",
+        "vet",
+        "tech",
+        "groomer"
+      ]
+    },
+    {
+      "name": "CREDENTIALS",
+      "type": "nvarchar",
+      "size": 60,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "BIO",
+      "type": "nvarchar",
+      "size": 2000,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "EDUCATION",
+      "type": "nvarchar",
+      "size": 1000,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "LANGUAGES",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "PHOTO",
+      "type": "nvarchar",
+      "size": 300,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "COLOR",
+      "type": "nvarchar",
+      "size": 7,
+      "nullable": false,
+      "default": "#3F7D6B",
+      "description": "Hex colour used on the schedule."
+    },
+    {
+      "name": "EMAIL",
+      "type": "nvarchar",
+      "size": 120,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "PHONE",
+      "type": "nvarchar",
+      "size": 30,
+      "nullable": false,
+      "default": ""
+    },
+    {
+      "name": "HOME_ROOM_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "ROOM.ROOM_ID"
+    },
+    {
+      "name": "OWN_ONLY",
+      "type": "bit",
+      "nullable": false,
+      "default": 0,
+      "description": "1 = sees and works on own appointments and visits only."
+    },
+    {
+      "name": "SHOW_WEB",
+      "type": "bit",
+      "nullable": false,
+      "default": 0,
+      "description": "1 = shown on the public Vets page and bookable online."
+    },
+    {
+      "name": "WEB_ORDER",
+      "type": "int",
+      "nullable": false,
+      "default": 0
+    },
+    {
+      "name": "ACCEPTING",
+      "type": "bit",
+      "nullable": false,
+      "default": 1,
+      "description": "1 = can be booked online."
+    },
+    {
+      "name": "PASS_HASH",
+      "type": "nvarchar",
+      "size": 200,
+      "nullable": false,
+      "default": "",
+      "description": "Password hash (never the password)."
+    },
+    {
+      "name": "MUST_CHANGE",
+      "type": "bit",
+      "nullable": false,
+      "default": 0,
+      "description": "1 = must choose a new password at the next sign-in."
+    },
+    {
+      "name": "IS_DEMO",
+      "type": "bit",
+      "nullable": false,
+      "default": 0,
+      "description": "1 = sample staff; can sign in only in demo mode."
+    },
+    {
+      "name": "ACTIVE",
+      "type": "bit",
+      "nullable": false,
+      "default": 1
+    },
+    {
+      "name": "LAST_LOGIN",
+      "type": "datetime2",
+      "nullable": true,
+      "description": "Last sign-in (UTC)."
+    },
+    {
+      "name": "SYSDTE",
+      "type": "datetime",
+      "nullable": false,
+      "default": "GETDATE()"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "UX_STAFF_LOGIN",
+      "unique": true,
+      "columns": [
+        "LOGIN"
+      ]
+    }
+  ],
+  "referencedBy": [
+    "ACTIVITY.STAFF_ID",
+    "ALBUM.ADDED_BY",
+    "APPOINTMENT.CREATED_BY",
+    "APPOINTMENT.STAFF_ID",
+    "APPTLOG.STAFF_ID",
+    "BOOKSTAFF.STAFF_ID",
+    "CLIENT.CREATED_BY",
+    "DIAGNOSIS.STAFF_ID",
+    "INVOICE.CREATED_BY",
+    "MAILLOG.STAFF_ID",
+    "MEDIA.ADDED_BY",
+    "MESSAGE.HANDLED_BY",
+    "ORDERLINE.DONE_BY",
+    "ORDERLINE.ORDERED_BY",
+    "PAGEDOC.SAVED_BY",
+    "PAGEVER.SAVED_BY",
+    "PAYMENT.STAFF_ID",
+    "PET.CREATED_BY",
+    "PETVACCINE.STAFF_ID",
+    "PETWEIGHT.STAFF_ID",
+    "REMINDER.STAFF_ID",
+    "RESULT.ENTERED_BY",
+    "STAFFHOURS.STAFF_ID",
+    "STAFFPERM.STAFF_ID",
+    "STAFFSESSION.STAFF_ID",
+    "STAFFSPECIES.STAFF_ID",
+    "TIMEOFF.STAFF_ID",
+    "VISIT.CREATED_BY",
+    "VISIT.STAFF_ID",
+    "VISITFILE.UPLOADED_BY",
+    "VISITNOTE.SIGNED_BY",
+    "VISITNOTE.STAFF_ID",
+    "VISITROOM.STAFF_ID"
+  ]
+}

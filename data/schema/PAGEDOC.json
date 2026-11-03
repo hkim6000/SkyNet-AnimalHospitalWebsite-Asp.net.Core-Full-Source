@@ -1,0 +1,42 @@
+{
+  "table": "PAGEDOC",
+  "area": "website",
+  "description": "Content blocks of each public page.",
+  "primaryKey": [
+    "PAGE_KEY"
+  ],
+  "columns": [
+    {
+      "name": "PAGE_KEY",
+      "type": "nvarchar",
+      "size": 30,
+      "nullable": false,
+      "primaryKey": true
+    },
+    {
+      "name": "BLOCKS",
+      "type": "nvarchar",
+      "size": "max",
+      "nullable": false,
+      "default": "[]",
+      "description": "JSON array of content blocks."
+    },
+    {
+      "name": "SAVED_UTC",
+      "type": "datetime2",
+      "nullable": false
+    },
+    {
+      "name": "SAVED_BY",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "default": "",
+      "references": "STAFF.STAFF_ID"
+    }
+  ],
+  "indexes": [],
+  "referencedBy": [
+    "PAGEVER.PAGE_KEY"
+  ]
+}

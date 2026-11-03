@@ -1,0 +1,29 @@
+{
+  "table": "BOOKSTAFF",
+  "area": "catalog",
+  "description": "People who do each booking type.",
+  "primaryKey": [
+    "BOOKTYPE_ID",
+    "STAFF_ID"
+  ],
+  "columns": [
+    {
+      "name": "BOOKTYPE_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true,
+      "references": "BOOKTYPE.BOOKTYPE_ID"
+    },
+    {
+      "name": "STAFF_ID",
+      "type": "nvarchar",
+      "size": 50,
+      "nullable": false,
+      "primaryKey": true,
+      "references": "STAFF.STAFF_ID"
+    }
+  ],
+  "indexes": [],
+  "referencedBy": []
+}
